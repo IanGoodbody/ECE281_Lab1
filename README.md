@@ -9,16 +9,16 @@ The goal of the prelab was to design, simulate, and test a basic three-bit two's
 values were created from the following truth table with A, B, and C as inputs and X, Y, and Z as outputs with
 A and X as the most significant bits for each number.
 
-| A | B | C || X | Y | Z |
-|:-:|:-:|:-:||:-:|:-:|:-:|
-| 0 | 0 | 0 || 0 | 0 | 0 |
-| 0 | 0 | 1 || 1 | 1 | 1 |
-| 0 | 1 | 0 || 1 | 1 | 0 |
-| 0 | 1 | 1 || 1 | 0 | 1 |
-| 1 | 0 | 0 || 1 | 0 | 0 |
-| 1 | 0 | 1 || 0 | 1 | 1 |
-| 1 | 1 | 0 || 0 | 1 | 0 |
-| 1 | 1 | 1 || 0 | 0 | 1 |
+    | A | B | C || X | Y | Z |
+    |===|===|===||===|===|===|
+    | 0 | 0 | 0 || 0 | 0 | 0 |
+    | 0 | 0 | 1 || 1 | 1 | 1 |
+    | 0 | 1 | 0 || 1 | 1 | 0 |
+    | 0 | 1 | 1 || 1 | 0 | 1 |
+    | 1 | 0 | 0 || 1 | 0 | 0 |
+    | 1 | 0 | 1 || 0 | 1 | 1 |
+    | 1 | 1 | 0 || 0 | 1 | 0 |
+    | 1 | 1 | 1 || 0 | 0 | 1 |
     
 Karnaugh maps yeielded the follwoing canonical equations for each of the outputs
 
