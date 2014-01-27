@@ -93,4 +93,7 @@ given output. The output data given matched the calculated values (LN 18).
 
 Having passed the testbench, the design, along with a new constraints file adjusting the inputs and outputs for 8-bit
 vectors, was pushed to the FPGA and again spot-checked. The two's complement machine passed the spot checking and
-represented a fully functional two's complement machine
+represented a fully functional two's complement machine.
+
+Documentation: C2C Ryan Good helped me find with librarys were necessary to do arithmatic with IEEE_ STD_Vectors. 
+He also critiqued my indexing syntax in the 8-bit testbench.
