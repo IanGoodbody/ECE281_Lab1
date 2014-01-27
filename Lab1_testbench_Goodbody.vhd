@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: United States Air Force Academy Department of Electrical and Computer Engineering
+-- Engineer: 		Ian Goodbody
 --
 -- Create Date:   15:40:16 01/23/2014
 -- Design Name:   

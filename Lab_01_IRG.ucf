@@ -1,0 +1,11 @@
+# 3 bit two's complement constraint file
+#
+# ==== Slide Switches (SW) ====
+NET "C" LOC = "G18"; # Type = INPUT, Sch name = SW0
+NET "B" LOC = "H18"; # Type = INPUT, Sch name = SW1
+NET "A" LOC = "K18"; # Type = INPUT, Sch name = SW2
+
+# LED outputs constraints
+NET "Z"  LOC = "J14"; # Sch name = LD0
+NET "Y"  LOC = "J15"; # Sch name = LD1
+NET "X"  LOC = "K15"; # Sch name = LD2
