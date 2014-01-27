@@ -7,7 +7,7 @@ Two's compliment circuit design lab
 
 The goal of the prelab was to design, simulate, and test a basic three-bit two's complement converter. The 
 values were created from the following truth table with A, B, and C as inputs and X, Y, and Z as outputs with
-A and X as the most significant bits for each number.
+A and X as the most significant bits for each number. (Lab Notebook 6)
 
 | A | B | C | X | Y | Z |
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -20,30 +20,30 @@ A and X as the most significant bits for each number.
 | 1 | 1 | 0 | 0 | 1 | 0 |
 | 1 | 1 | 1 | 0 | 0 | 1 |
     
-Karnaugh maps yielded the following canonical equations for each of the outputs
+Karnaugh maps yielded the following canonical equations for each of the outputs (LN 7)
 
     X = A'B + A'C + AB'C'
     Y = BC' + B'C
     Z = C
     
-Which then translated to the following schematic:
+Which then translated to the following schematic (LN 7):
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/CanonicalDesign.jpg "Canonical Schematic")
 
 
-Given the complexity of the canonical schematic, the equations were simplified to more usable XOR gate models:
+Given the complexity of the canonical schematic, the equations were simplified to more usable XOR gate models (LN 6):
 
     X = A xor (B + C)
     Y = B xor C
     Z = C
     
-Which then produced the far more usable schematic: 
+Which then produced the far more usable schematic (LN 7): 
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/SimplifiedDesign.jpg "Simplified Schematic")
 
-The simplified circuit was then abstracted as a VHDL file and simulated with the Xilinx ISE Project Design
-Suite 14.1 and gave the following output, with signals arragned A, B, C, X, Y, Z from top to bottom in a
-sequence corresponding with the truth table above:
+The simplified circuit was then abstracted as a VHDL file (Lab1_Goodbody.vhd, LN 8) and simulated with a VHDL testbench
+file (Lab1_ testbench_Goodbody, LN 9) theXilinx ISE Project DesignSuite 14.1 and gave the following output, with signals
+arragned A, B, C, X, Y, Z from top tobottom in asequence corresponding with the truth table above:
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/ElementSignal.JPG "Component Signals")
 
@@ -57,14 +57,15 @@ output signal 110 in accordance with the third line of the truth table.
 
 #### 3-bit Implementation
 
-After the signal simulation validated the design, a constraints file was created setting the lest significant bit as
-the leftmost input switch and leftmost output LED on the NEXYS 2 FPGA. The program was then downloaded to the FPGA
-and an exhaustive test of the truth table obove was performed to ensure proper performance. Overall the 3-bit 
-implementation of the two's complement machine performed satisfactorily.
+After the signal simulation validated the design, a constraints file (Lab_ 01_IRG.ucf, LN 12) was created setting the
+lestsignificant bit asthe leftmost input switch and leftmost output LED on the NEXYS 2 FPGA. The program was then
+downloadedto the FPGAand an exhaustive test of the truth table obove was performed to ensure proper performance. Overall
+the 3-bitimplementation of the two's complement machine performed satisfactorily.
 
 #### 8-bit Full Function Implementation
 
-To create the fully functional 8-bit two's complement machine seperate VHDL file, testbench, and constraints files were
+To create the fully functional 8-bit two's complement machine seperate VHDL file (Lab1_ FullFunction_ Goodbody.vhd, LN
+13), testbench (Lab1_ TestBench_ FullFunction.vhd, LN 14), and constraints files (Lab1_ FF_ IRG.ucf) were
 created based on those used for the 3-bit model. The behavioral VHDL file was modified to implement vectors and
 arithmetic to greatly simplify the code, the main function being:
 
@@ -86,7 +87,7 @@ been as follows:
 A testbench file was created from the behavioral VHDL code. Rather than exhaustively check every value, the testbench
 only spot-tested the following values: "00000000", "00000001", "10110101", "10000000", and "11111111" which produced
 easily identifiable output responses. The two's compliment for each of these values was calculated then compared to the
-given output. The output data given matched the calculated values.
+given output. The output data given matched the calculated values (LN 18).
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/8BitSignal.JPG "8-bit Signal")
 
