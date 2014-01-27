@@ -47,8 +47,49 @@ sequence corresponding with the truth table above:
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/ElementSignal.JPG "Component Signals")
 
-Ultimately the Input and Output values produced by the simulation matched those of the truth table validating the
-digital circuit design. It is worth noting that the signal and truth table input and output signals mirror one
-another as one would expect for two's complement numbers. The binary inputs run from 0 to 3 while the outputs
-correspondingly decrease from 0 to -3, the binary value for weird numbers 0 and -4 are their own two's compliments,
-and the last three values of the table cycle from -3 to -1 for the input and from 3 to 1 for the output.
+Ultimately the Input and Output values produced by the simulation matched those of the truth table above validating the
+digital circuit design. The cursor on the signal output was used to read the different signal values to gather the
+readings referenced above. As shown in the diagram, the input signal 010 under the yellow cursor corresponded with the
+output signal 110 in accordance with the third line of the truth table.
+
+
+### Main Lab
+
+#### 3-bit Implementation
+
+After the signal simulation validated the design, a constraints file was created setting the lest significant bit as
+the leftmost input switch and leftmost output LED on the NEXYS 2 FPGA. The program was then downloaded to the FPGA
+and an exhaustive test of the truth table obove was performed to ensure proper performance. Overall the 3-bit 
+implementation of the two's complement machine performed satisfactorily.
+
+#### 8-bit Full Function Implementation
+
+To create the fully functional 8-bit two's complement machine seperate VHDL file, testbench, and constraints files were
+created based on those used for the 3-bit model. The behavioral VHDL file was modified to implement vectors and
+arithmetic to greatly simplify the code, the main function being:
+
+    X = (not A) + 1
+    
+Where X is the output vector and A the input vector. This equation corresponds with the classical method of forming a
+two's complement number by inverting all the numbers in the bit, adding 1, then disregarding the carry bit. The 
+alternative would have involved redesign the logic circuit model above, which, although it allows for a degree of 
+recursive design, the design would create a linearly increasing level of complexity in the logic code. For example,
+considering A(0) and X(0) as the least significant input and output bit the straight VHDL logic syntax would have
+been as follows:
+
+    X(0) <= A(0)
+    X(1) <= A(1) xor A(0)
+    X(2) <= A(2) xor (A(1) or A(0))
+    X(3) <= A(3) xor (A(2) or A(1) or A(0))
+    ....
+    
+A testbench file was created from the behavioral VHDL code. Rather than exhaustively check every value, the testbench
+only spot-tested the following values: "00000000", "00000001", "10110101", "10000000", and "11111111" which produced
+easily identifiable output responses. The two's compliment for each of these values was calculated then compared to the
+given output. The output data given matched the calculated values.
+
+![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/8BitSignal.JPG "8-bit Signal")
+
+Having passed the testbench, the design, along with a new constraints file adjusting the inputs and outputs for 8-bit
+vectors, was pushed to the FPGA and again spot-checked. The two's complement machine passed the spot checking and
+represented a fully functional two's complement machine
