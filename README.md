@@ -52,3 +52,6 @@ digital circuit design. It is worth noting that the signal and truth table input
 another as one would expect for two's complement numbers. The binary inputs run from 0 to 3 while the outputs
 correspondingly decrease from 0 to -3, the binary value for weird numbers 0 and -4 are their own two's compliments,
 and the last three values of the table cycle from -3 to -1 for the input and from 3 to 1 for the output.
+
+Documentation: C2C Ryan Good helped me find the proper IEEE VHDL libraries to use arithmatic with Standard vectors.
+He also critiqued my formatting for vector indexes in the 8 bit testbench file.
