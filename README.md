@@ -58,25 +58,25 @@ output signal 110 in accordance with the third line of the truth table.
 #### 3-bit Implementation
 
 After the signal simulation validated the design, a constraints file (Lab_ 01_IRG.ucf, LN 12) was created setting the
-lestsignificant bit asthe leftmost input switch and leftmost output LED on the NEXYS 2 FPGA. The program was then
-downloadedto the FPGAand an exhaustive test of the truth table obove was performed to ensure proper performance. Overall
-the 3-bitimplementation of the two's complement machine performed satisfactorily.
+lest significant bit as the leftmost input switch and left most output LED on the NEXYS 2 FPGA. The program was then
+downloaded to the FPGA and an exhaustive test of the truth table above was performed to insure proper performance. 
+Overall the 3-bitimplementation of the two's complement machine performed satisfactorily.
 
 #### 8-bit Full Function Implementation
 
 To create the fully functional 8-bit two's complement machine seperate VHDL file (Lab1_ FullFunction_ Goodbody.vhd, LN
 13), testbench (Lab1_ TestBench_ FullFunction.vhd, LN 14), and constraints files (Lab1_ FF_ IRG.ucf) were
 created based on those used for the 3-bit model. The behavioral VHDL file was modified to implement vectors and
-arithmetic to greatly simplify the code, the main function being:
+arithmetic to simplify the code with the main architecture function:
 
     X = (not A) + 1
     
 Where X is the output vector and A the input vector. This equation corresponds with the classical method of forming a
 two's complement number by inverting all the numbers in the bit, adding 1, then disregarding the carry bit. The 
 alternative would have involved redesign the logic circuit model above, which, although it allows for a degree of 
-recursive design, the design would create a linearly increasing level of complexity in the logic code. For example,
+recursive design, the design would involve a linearly increasing level of complexity. For example,
 considering A(0) and X(0) as the least significant input and output bit the straight VHDL logic syntax would have
-been as follows:
+expanded as follows:
 
     X(0) <= A(0)
     X(1) <= A(1) xor A(0)
@@ -85,9 +85,15 @@ been as follows:
     ....
     
 A testbench file was created from the behavioral VHDL code. Rather than exhaustively check every value, the testbench
-only spot-tested the following values: "00000000", "00000001", "10110101", "10000000", and "11111111" which produced
-easily identifiable output responses. The two's compliment for each of these values was calculated then compared to the
-given output. The output data given matched the calculated values (LN 18).
+only spot-tested the following 5 values in the truth table below (LN 18).
+
+| A | X |
+|:-:|:-:|
+|0000 0000|0000 0000|
+|0000 0001|1111 1111|
+|1011 0101|0100 1011|
+|1000 0000|1000 0000|
+|1111 1111|0000 0001|
 
 ![alt text](https://raw2.github.com/IanGoodbody/ECE281_Lab1/master/Project_Images/8BitSignal.JPG "8-bit Signal")
 
